@@ -41,6 +41,29 @@ $(document).ready(init);
 
 function init() {
   render();
+  $(".js-add-new-pet-form").on("submit", addNewPet);
+}
+
+function addNewPet(event) {
+  event.preventDefault();
+  console.log("add new pet");
+  const newPet = {
+    name: $(".js-new-pet-name").val(),
+    type: $(".js-new-pet-type").val(),
+    price: $(".js-new-pet-price").val(),
+    notes: $(".js-new-pet-note").val()
+  };
+
+  console.log(newPet);
+
+  inventory.push(newPet);
+
+  $(".js-new-pet-name").val("");
+  $(".js-new-pet-type").val("");
+  $(".js-new-pet-price").val("");
+  $(".js-new-pet-note").val("");
+
+  render();
 }
 
 function render() {
